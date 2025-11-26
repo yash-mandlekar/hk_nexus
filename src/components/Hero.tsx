@@ -1,7 +1,4 @@
-import Image from "next/image";
-import Link from "next/link";
-import { Dot, StarIcon } from "lucide-react";
-import { FaStar } from "react-icons/fa";
+import { Dot } from "lucide-react";
 
 export default function Hero() {
   return (
