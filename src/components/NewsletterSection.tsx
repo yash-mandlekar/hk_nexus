@@ -1,8 +1,8 @@
 const NewsletterSection = () => {
   return (
-    <section className="w-full py-16 px-4">
+    <section className="w-full pb-20 px-4">
       <div 
-        className="max-w-7xl mx-auto rounded-[2.5rem] p-8 lg:p-16 flex flex-col lg:flex-row items-center justify-between gap-10 shadow-2xl"
+        className="max-w-7xl mx-auto rounded-xl p-8 lg:p-16 flex flex-col lg:flex-row items-center justify-between gap-10 shadow-2xl"
         style={{
           background: `linear-gradient(90deg, var(--secondary) 0%, var(--primary) 100%)`
         }}

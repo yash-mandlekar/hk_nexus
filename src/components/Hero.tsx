@@ -51,7 +51,7 @@ export default function Hero() {
               </div>
 
               {/* Floating Testimonial Card */}
-              <div className="bg-white p-6 rounded-2xl shadow-xl absolute top-1/2 -translate-y-1/2 left-4 lg:-left-8 max-w-xs w-[calc(100%-2rem)] lg:w-80 z-10 border border-gray-100">
+              {/* <div className="bg-white p-6 rounded-2xl shadow-xl absolute top-1/2 -translate-y-1/2 left-4 lg:-left-8 max-w-xs w-[calc(100%-2rem)] lg:w-80 z-10 border border-gray-100">
                 <div className="flex items-center gap-3 mb-2">
                   <img
                     src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -69,7 +69,7 @@ export default function Hero() {
                     <FaStar key={i} className="text-yellow-400"/>
                   ))}
                 </div>
-              </div>
+              </div> */}
             </div>
 
             {/* Right Column: CTA Card (30% width) */}
