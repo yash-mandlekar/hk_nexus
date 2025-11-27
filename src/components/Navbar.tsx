@@ -44,7 +44,7 @@ export default function Navbar() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="text-gray-700 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                  className="text-gray-700 hover:text-primary px-3 py-2 rounded-md text-sm font-semibold transition-colors"
                 >
                   {item.name}
                 </Link>
@@ -56,7 +56,7 @@ export default function Navbar() {
           <div className="hidden md:block">
             <Link
               href="#"
-              className="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-full text-sm font-medium transition-colors shadow-lg shadow-primary/30"
+              className="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-full text-sm font-semibold transition-colors shadow-lg shadow-primary/30"
             >
               Get Started
             </Link>
