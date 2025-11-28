@@ -101,8 +101,6 @@ export default function AboutPage() {
 
   return (
     <div className="min-h-screen bg-white font-sans text-gray-900 flex flex-col">
-      <Navbar />
-
       <main className="flex-grow">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-gray-50 via-white to-accent/10 py-20 px-6">
@@ -307,8 +305,6 @@ export default function AboutPage() {
           </div>
         </section>
       </main>
-
-      <Footer />
     </div>
   );
 }

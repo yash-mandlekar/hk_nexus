@@ -2,9 +2,10 @@ import React from "react";
 import {
   Instagram,
   Facebook,
-  MessageCircle,
   ArrowRight,
-  Phone,
+  Linkedin,
+  Youtube,
+  Twitter,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -28,21 +29,17 @@ const Footer = () => {
             <div className="flex items-center gap-5">
               <Link
                 href="#"
+                aria-label="LinkedIn"
+                className="text-gray-900 hover:text-gray-600 hover:scale-110 transition-all duration-300"
+              >
+                <Linkedin strokeWidth={2} className="w-7 h-7" />
+              </Link>
+              <Link
+                href="#"
                 aria-label="Instagram"
                 className="text-gray-900 hover:text-gray-600 hover:scale-110 transition-all duration-300"
               >
                 <Instagram strokeWidth={2} className="w-7 h-7" />
-              </Link>
-              <Link
-                href="#"
-                aria-label="WhatsApp"
-                className="text-gray-900 hover:text-gray-600 hover:scale-110 transition-all duration-300"
-              >
-                {/* Visual approximation of WhatsApp icon using MessageCircle */}
-                <div className="relative">
-                  <MessageCircle strokeWidth={2} className="w-7 h-7" />
-                  <div className="absolute top-[6px] left-[6px] w-2 h-2 bg-transparent border border-current rounded-full opacity-0"></div>
-                </div>
               </Link>
               <Link
                 href="#"
@@ -57,6 +54,20 @@ const Footer = () => {
                     className="w-5 h-5"
                   />
                 </div>
+              </Link>
+              <Link
+                href="#"
+                aria-label="YouTube"
+                className="text-gray-900 hover:text-gray-600 hover:scale-110 transition-all duration-300"
+              >
+                <Youtube strokeWidth={2} className="w-7 h-7" />
+              </Link>
+              <Link
+                href="#"
+                aria-label="Twitter"
+                className="text-gray-900 hover:text-gray-600 hover:scale-110 transition-all duration-300"
+              >
+                <Twitter strokeWidth={2} className="w-7 h-7" />
               </Link>
             </div>
           </div>

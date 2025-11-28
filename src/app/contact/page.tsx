@@ -62,9 +62,7 @@ export default function ContactPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-white font-sans text-gray-900 flex flex-col">
-      <Navbar />
-
+    <div className="min-h-screen font-sans text-gray-900 flex flex-col">
       <main className="flex-grow">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-gray-50 via-white to-accent/10 py-20 px-6">
@@ -334,8 +332,6 @@ export default function ContactPage() {
         {/* FAQ Section */}
         <FAQSection />
       </main>
-
-      <Footer />
     </div>
   );
 }
