@@ -18,12 +18,8 @@ export default function ServicesPage() {
       {/* --- Hero Section --- */}
       <section className="relative pt-20 pb-8 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h5 className="text-xs md:text-lg text-gray-500 flex items-center justify-center mb-4">
-            <Dot className="text-green-500 h-12 w-12" /> Comprehensive BPO
-            Solutions
-          </h5>
           <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight text-gray-900 mb-6">
-            <span className="block">Our Services</span>
+            <span>Our</span> <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Services</span>
           </h1>
           <p className="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-gray-500 mb-10">
             End-to-end call center, support and BPO solutions built to scale

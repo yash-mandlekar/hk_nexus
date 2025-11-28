@@ -1,28 +1,59 @@
-import React from 'react';
-import { Calendar, Headset, TrendingUp, Settings, Languages } from 'lucide-react';
+import React from "react";
+import Link from "next/link";
+import {
+  Calendar,
+  Headset,
+  TrendingUp,
+  Settings,
+  Languages,
+} from "lucide-react";
 
 // 1. Define the Data
 const services = [
   {
     title: "Inbound Customer Support",
-    description: "Fast, friendly, 24/7 customer assistance for queries, orders, and issue resolution.",
-    icon: <Headset className="w-10 h-10" style={{ stroke: "url(#icon-gradient)" }} />,
+    description:
+      "Fast, friendly, 24/7 customer assistance for queries, orders, and issue resolution.",
+    icon: (
+      <Headset
+        className="w-10 h-10"
+        style={{ stroke: "url(#icon-gradient)" }}
+      />
+    ),
   },
   {
     title: "Outbound Sales and Telemarketing",
-    description: "Targeted outbound calling to generate leads, qualify prospects, and close sales.",
-    icon: <TrendingUp className="w-10 h-10" style={{ stroke: "url(#icon-gradient)" }} />,
+    description:
+      "Targeted outbound calling to generate leads, qualify prospects, and close sales.",
+    icon: (
+      <TrendingUp
+        className="w-10 h-10"
+        style={{ stroke: "url(#icon-gradient)" }}
+      />
+    ),
   },
   {
     title: "Technical Support",
-    description: "L1–L3 support for troubleshooting software, hardware, and app issues.",
-    icon: <Settings className="w-10 h-10" style={{ stroke: "url(#icon-gradient)" }} />,
+    description:
+      "L1–L3 support for troubleshooting software, hardware, and app issues.",
+    icon: (
+      <Settings
+        className="w-10 h-10"
+        style={{ stroke: "url(#icon-gradient)" }}
+      />
+    ),
   },
   {
     title: "Multilingual Support",
-    description: "Native-level agents offering support in multiple regional & global languages.",
-    icon: <Languages className="w-10 h-10" style={{ stroke: "url(#icon-gradient)" }} />,
-  }
+    description:
+      "Native-level agents offering support in multiple regional & global languages.",
+    icon: (
+      <Languages
+        className="w-10 h-10"
+        style={{ stroke: "url(#icon-gradient)" }}
+      />
+    ),
+  },
 ];
 
 const ServicesSection = () => {
@@ -42,34 +73,41 @@ const ServicesSection = () => {
       </svg>
 
       <div className="max-w-7xl mx-auto relative z-10">
-        
         {/* Header Section */}
-        <div className="text-center mb-16">
-          <h2 className="text-5xl font-bold text-gray-900 mb-6 tracking-tight">
-            Our Services
-          </h2>
-          <p className="text-gray-500 text-lg max-w-2xl mx-auto leading-relaxed">
-            Your trusted partner for customer support, sales, and multilingual communication.
-          </p>
+        <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+          <div className="max-w-2xl text-left">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
+              Our Services
+            </h2>
+            <p className="text-gray-500 text-lg leading-relaxed">
+              Your trusted partner for customer support, sales, and multilingual
+              communication.
+            </p>
+          </div>
+
+          <Link
+            href="/services"
+            className="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg text-sm font-semibold transition-colors shadow-lg shadow-primary/30 flex-shrink-0"
+          >
+            View All Services
+          </Link>
         </div>
 
         {/* Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service, index) => (
-            <div 
-              key={index} 
+            <div
+              key={index}
               className="bg-white rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.05)] border border-gray-100 flex flex-col overflow-hidden hover:shadow-xl transition-shadow duration-300"
             >
               {/* Card Body */}
               <div className="p-8 flex-grow flex flex-col items-start">
-                <div className="mb-6">
-                  {service.icon}
-                </div>
-                
+                <div className="mb-6">{service.icon}</div>
+
                 <h3 className="text-xl font-bold text-gray-900 mb-3 leading-tight">
                   {service.title}
                 </h3>
-                
+
                 <p className="text-gray-500 text-sm leading-relaxed">
                   {service.description}
                 </p>
@@ -77,19 +115,20 @@ const ServicesSection = () => {
 
               {/* Card Footer Button */}
               {/* Using CSS variables for the exact gradient: secondary (pink) -> primary (purple) */}
-              <button 
+              <button
                 className="w-full py-4 px-6 flex justify-between items-center text-white font-medium transition-opacity hover:opacity-90 cursor-pointer"
                 style={{
-                  background: `linear-gradient(to right, var(--secondary), var(--primary))`
+                  background: `linear-gradient(to right, var(--secondary), var(--primary))`,
                 }}
               >
-                <span className="text-sm font-semibold tracking-wide">Book a Consultation</span>
+                <span className="text-sm font-semibold tracking-wide">
+                  Book a Consultation
+                </span>
                 <Calendar className="w-5 h-5 opacity-90" />
               </button>
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );

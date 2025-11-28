@@ -9,8 +9,8 @@ export default function Navbar() {
 
   const navLinks = [
     { name: "Home", href: "/" },
-    { name: "Service", href: "/services" },
-    // { name: "Pricing", href: "#" },
+    { name: "Services", href: "/services" },
+    { name: "Careers", href: "/careers" },
     { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
   ];
@@ -39,7 +39,7 @@ export default function Navbar() {
 
           {/* Desktop Menu */}
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
+            <div className="flex items-baseline space-x-8">
               {navLinks.map((item) => (
                 <Link
                   key={item.name}
@@ -56,7 +56,7 @@ export default function Navbar() {
           <div className="hidden md:block">
             <Link
               href="#"
-              className="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-full text-sm font-semibold transition-colors shadow-lg shadow-primary/30"
+              className="bg-primary hover:bg-primary/90 text-white px-4 py-3 rounded-lg text-sm font-semibold transition-colors shadow-lg shadow-primary/30"
             >
               Get Started
             </Link>
@@ -124,7 +124,7 @@ export default function Navbar() {
             <div className="pt-4">
               <Link
                 href="#"
-                className="block w-full text-center bg-primary hover:bg-primary/90 text-white px-4 py-3 rounded-full text-base font-medium transition-colors shadow-lg shadow-primary/30"
+                className="block w-full text-center bg-primary hover:bg-primary/90 text-white px-4 py-3 rounded-lg text-base font-medium transition-colors shadow-lg shadow-primary/30"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Get Started

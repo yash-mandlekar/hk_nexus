@@ -20,10 +20,10 @@ export default function Hero() {
           exceptional service.
         </p>
 
-        <section className="w-full pt-16 px-4 flex justify-center items-center">
-          <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-[60%_40%] gap-8 lg:gap-6 items-center">
+        <section className="w-full pt-16 flex justify-center items-center">
+          <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-[60%_40%] items-center">
             {/* Left Column: Image & Testimonial (70% width) */}
-            <div className="relative h-full">
+            <div className="relative h-full md:mr-4">
               {/* Main Image Container */}
               <div className="rounded-2xl overflow-hidden shadow-lg h-[400px] lg:h-[500px] w-full">
                 <img

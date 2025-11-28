@@ -90,6 +90,10 @@ const Footer = () => {
                           ? "/contact"
                           : item === "About Us"
                           ? "/about"
+                          : item === "Services"
+                          ? "/services"
+                          : item === "Why HK Nexus"
+                          ? "/why-hk-nexus"
                           : "#"
                       }
                       className="text-gray-600 hover:text-[#594ad2] transition-colors font-medium text-[15px]"
