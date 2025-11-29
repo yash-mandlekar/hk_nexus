@@ -12,6 +12,7 @@ import {
   HelpCircle,
   Briefcase,
 } from "lucide-react";
+import { toast } from "sonner";
 import { useState } from "react";
 
 export default function ContactPage() {
@@ -26,7 +27,9 @@ export default function ContactPage() {
     e.preventDefault();
     // Handle form submission logic here
     console.log("Form submitted:", formData);
-    alert("Thank you for your message! We will get back to you soon.");
+
+    // ... inside component ...
+    toast.success("Thank you for your message! We will get back to you soon.");
     setFormData({ name: "", email: "", subject: "", message: "" });
   };
 

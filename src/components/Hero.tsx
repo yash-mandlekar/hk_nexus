@@ -2,7 +2,7 @@ import { Dot } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative pt-20 pb-20 lg:pb-28 overflow-hidden">
+    <section className="relative md:pt-20 pt-10 pb-20 lg:pb-28 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h5 className="text-xs md:text-lg text-gray-500 flex items-center justify-center">
           <Dot className="text-green-500 h-12 w-12" /> 24/7 availability, 40%
@@ -20,10 +20,10 @@ export default function Hero() {
           exceptional service.
         </p>
 
-        <section className="w-full pt-16 flex justify-center items-center">
+        <section className="w-full md:pt-16 pt-10 flex justify-center items-center">
           <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-[60%_40%] items-center">
             {/* Left Column: Image & Testimonial (70% width) */}
-            <div className="relative h-full md:mr-4">
+            <div className="relative h-full mb-4 md:mb-0 md:mr-4">
               {/* Main Image Container */}
               <div className="rounded-2xl overflow-hidden shadow-lg h-[400px] lg:h-[500px] w-full">
                 <img

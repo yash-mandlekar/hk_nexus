@@ -1,11 +1,7 @@
 "use client";
 import React, { useState } from "react";
-import {
-  MapPin,
-  ArrowRight,
-  Upload,
-  Dot,
-} from "lucide-react";
+import { MapPin, ArrowRight, Upload, Dot } from "lucide-react";
+import { toast } from "sonner";
 import { benefits, jobOpenings, lifeAtCompany } from "./data";
 
 export default function CareersPage() {
@@ -30,7 +26,9 @@ export default function CareersPage() {
     e.preventDefault();
     // Handle form submission logic here
     console.log("Form submitted:", formData);
-    alert("Application submitted successfully!");
+
+    // ... inside component ...
+    toast.success("Application submitted successfully!");
   };
 
   return (
@@ -40,7 +38,10 @@ export default function CareersPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight text-gray-900 mb-6">
             <span>Build Your</span>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary"> Career With Us</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
+              {" "}
+              Career With Us
+            </span>
           </h1>
           <p className="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-gray-500 mb-10">
             Join a fast-growing customer support & call-center team shaping the

@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import {
   Instagram,
@@ -9,6 +11,8 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
+import Image from "next/image";
+
 const Footer = () => {
   return (
     <footer className="w-full bg-white pt-24 pb-12 px-6 border-t border-gray-100 font-sans">
@@ -17,9 +21,14 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-24">
           {/* Column 1: Brand & Socials (Spans 4 columns) */}
           <div className="lg:col-span-4 flex flex-col items-start">
-            <h2 className="text-3xl lg:text-[2.5rem] font-bold text-gray-900 mb-6 tracking-tight leading-none">
-              HK Nexus Global
-            </h2>
+            <div className="relative w-48 h-24">
+              <Image
+                src="/logo21.png"
+                alt="HK Nexus Global"
+                fill
+                className="object-contain object-left"
+              />
+            </div>
             <p className="text-gray-500 text-[17px] leading-relaxed mb-10 max-w-sm">
               Where technology, talent, and 24/7 operations come together to
               power exceptional service.
