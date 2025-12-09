@@ -11,6 +11,8 @@ import {
   Mail,
   Menu,
   X,
+  MessageSquare,
+  Briefcase,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -51,6 +53,8 @@ export default function DashLayout({
     { href: "/admin/dashboard", label: "Dashboard", icon: LayoutDashboard },
     { href: "#", label: "Users", icon: Users },
     { href: "/admin/newsletter", label: "Newsletter", icon: Mail },
+    { href: "/admin/contact", label: "Contact Messages", icon: MessageSquare },
+    { href: "/admin/careers", label: "Job Applications", icon: Briefcase },
     { href: "#", label: "Settings", icon: Settings },
   ];
 

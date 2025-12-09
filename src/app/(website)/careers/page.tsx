@@ -1,6 +1,6 @@
 "use client";
-import React, { useState } from "react";
-import { MapPin, ArrowRight, Upload, Dot } from "lucide-react";
+import React, { useState, useRef } from "react";
+import { MapPin, ArrowRight, Upload, Dot, X, FileText } from "lucide-react";
 import { toast } from "sonner";
 import { benefits, jobOpenings, lifeAtCompany } from "./data";
 
@@ -12,6 +12,10 @@ export default function CareersPage() {
     position: "",
     message: "",
   });
+  const [resumeFile, setResumeFile] = useState<File | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleInputChange = (
     e: React.ChangeEvent<
@@ -22,13 +26,116 @@ export default function CareersPage() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission logic here
-    console.log("Form submitted:", formData);
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      validateAndSetFile(file);
+    }
+  };
 
-    // ... inside component ...
-    toast.success("Application submitted successfully!");
+  const validateAndSetFile = (file: File) => {
+    // Validate file type
+    const allowedTypes = [
+      "application/pdf",
+      "application/msword",
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    ];
+
+    if (!allowedTypes.includes(file.type)) {
+      toast.error(
+        "Invalid file type. Please upload PDF, DOC, or DOCX files only."
+      );
+      return;
+    }
+
+    // Validate file size (10MB)
+    if (file.size > 10 * 1024 * 1024) {
+      toast.error("File size exceeds 10MB limit.");
+      return;
+    }
+
+    setResumeFile(file);
+  };
+
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragging(false);
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragging(false);
+
+    const file = e.dataTransfer.files[0];
+    if (file) {
+      validateAndSetFile(file);
+    }
+  };
+
+  const removeFile = () => {
+    setResumeFile(null);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!resumeFile) {
+      toast.error("Please upload your resume");
+      return;
+    }
+
+    if (isSubmitting) return;
+
+    setIsSubmitting(true);
+
+    try {
+      const formDataToSend = new FormData();
+      formDataToSend.append("fullName", formData.fullName);
+      formDataToSend.append("email", formData.email);
+      formDataToSend.append("phone", formData.phone);
+      formDataToSend.append("position", formData.position);
+      formDataToSend.append("message", formData.message);
+      formDataToSend.append("resume", resumeFile);
+
+      const response = await fetch("/api/careers/apply", {
+        method: "POST",
+        body: formDataToSend,
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        toast.success("Application submitted successfully!");
+        setFormData({
+          fullName: "",
+          email: "",
+          phone: "",
+          position: "",
+          message: "",
+        });
+        setResumeFile(null);
+        if (fileInputRef.current) {
+          fileInputRef.current.value = "";
+        }
+      } else {
+        toast.error(
+          data.error || "Failed to submit application. Please try again."
+        );
+      }
+    } catch (error) {
+      console.error("Application submission error:", error);
+      toast.error("An error occurred. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -311,17 +418,57 @@ export default function CareersPage() {
 
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-gray-700">
-                    Resume / CV
+                    Resume / CV *
                   </label>
-                  <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:bg-gray-50 transition-colors cursor-pointer">
-                    <Upload className="w-8 h-8 text-gray-400 mx-auto mb-2" />
-                    <p className="text-sm text-gray-500">
-                      Click to upload or drag and drop
-                    </p>
-                    <p className="text-xs text-gray-400 mt-1">
-                      PDF, DOC, DOCX up to 10MB
-                    </p>
-                  </div>
+                  {!resumeFile ? (
+                    <div
+                      onClick={() => fileInputRef.current?.click()}
+                      onDragOver={handleDragOver}
+                      onDragLeave={handleDragLeave}
+                      onDrop={handleDrop}
+                      className={`border-2 border-dashed rounded-lg p-8 text-center transition-all cursor-pointer ${
+                        isDragging
+                          ? "border-[#594ad2] bg-[#594ad2]/5"
+                          : "border-gray-300 hover:bg-gray-50"
+                      }`}
+                    >
+                      <Upload className="w-8 h-8 text-gray-400 mx-auto mb-2" />
+                      <p className="text-sm text-gray-500">
+                        Click to upload or drag and drop
+                      </p>
+                      <p className="text-xs text-gray-400 mt-1">
+                        PDF, DOC, DOCX up to 10MB
+                      </p>
+                      <input
+                        ref={fileInputRef}
+                        type="file"
+                        accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                        onChange={handleFileChange}
+                        className="hidden"
+                      />
+                    </div>
+                  ) : (
+                    <div className="border-2 border-[#594ad2] bg-[#594ad2]/5 rounded-lg p-4 flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <FileText className="w-8 h-8 text-[#594ad2]" />
+                        <div>
+                          <p className="text-sm font-medium text-gray-900">
+                            {resumeFile.name}
+                          </p>
+                          <p className="text-xs text-gray-500">
+                            {(resumeFile.size / 1024).toFixed(2)} KB
+                          </p>
+                        </div>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={removeFile}
+                        className="p-1 hover:bg-red-100 rounded-full transition-colors"
+                      >
+                        <X className="w-5 h-5 text-red-600" />
+                      </button>
+                    </div>
+                  )}
                 </div>
 
                 <div className="space-y-2">
@@ -344,9 +491,10 @@ export default function CareersPage() {
 
                 <button
                   type="submit"
-                  className="w-full bg-black text-white px-8 py-4 rounded-lg text-base font-bold hover:bg-gray-800 transition-colors duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all"
+                  disabled={isSubmitting}
+                  className="w-full bg-black text-white px-8 py-4 rounded-lg text-base font-bold hover:bg-gray-800 transition-colors duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"
                 >
-                  Submit Application
+                  {isSubmitting ? "Submitting..." : "Submit Application"}
                 </button>
               </form>
             </div>
