@@ -51,11 +51,11 @@ export default function DashLayout({
 
   const navItems = [
     { href: "/admin/dashboard", label: "Dashboard", icon: LayoutDashboard },
-    { href: "#", label: "Users", icon: Users },
+    // { href: "#", label: "Users", icon: Users },
     { href: "/admin/newsletter", label: "Newsletter", icon: Mail },
     { href: "/admin/contact", label: "Contact Messages", icon: MessageSquare },
     { href: "/admin/careers", label: "Job Applications", icon: Briefcase },
-    { href: "#", label: "Settings", icon: Settings },
+    // { href: "#", label: "Settings", icon: Settings },
   ];
 
   return (

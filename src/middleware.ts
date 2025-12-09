@@ -6,7 +6,7 @@ export async function middleware(request: NextRequest) {
     const path = request.nextUrl.pathname;
 
     // Define paths that require authentication
-    const isProtectedPath = path.startsWith("/admin/dashboard");
+    const isProtectedPath = path.startsWith("/admin/");
 
     if (isProtectedPath) {
         const token = await getToken({
