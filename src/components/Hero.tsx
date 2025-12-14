@@ -1,79 +1,128 @@
-import { Dot } from "lucide-react";
-import Link from "next/link";
+"use client";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useState, useEffect } from "react";
 
 export default function Hero() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const slides = [
+    {
+      image: "/images/slider/1.png",
+      title: "Customer Service in 360-degree",
+      subtitle: "Scalable, virtual, and real",
+      description:
+        "AI-powered contact center service provider that provides a full range of services intended to improve the client experience for companies all over the world. Examine our options.",
+    },
+    {
+      image: "/images/slider/2.png",
+      title: "INTELLIGENCE ORCHESTRATION WITH EXCELLENCE",
+      subtitle: "AI that grows. knowledge that lasts.",
+      description:
+        "At HK Nexus Global, we combine innovation and AI-powered solutions with human knowledge to improve experience and performance at every stage. We create solutions that are tailored to your objectives and environment thanks to our extensive industry knowledge and decades of operational expertise. We precisely handle changing demands, issues, and goals while guiding customers through their transformation journey in a clear and collaborative manner.",
+    },
+    {
+      image: "/images/slider/3.png",
+      title: "Powering Global Business Excellence",
+      subtitle: "Technology meets human expertise",
+      description:
+        "Delivering world-class customer support solutions that combine cutting-edge AI technology with experienced professionals. We empower businesses worldwide with 24/7 multilingual support, ensuring exceptional service delivery across all touchpoints and driving measurable results for your organization.",
+    },
+  ];
+
+  // Auto-slide functionality
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 5000); // Change slide every 5 seconds
+
+    return () => clearInterval(interval);
+  }, [slides.length]);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  };
+
   return (
-    <section className="relative overflow-hidden my-10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <section className="w-full md:pt-16 pt-10 flex justify-center items-center">
-          <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-[60%_40%] items-center">
-            {/* Left Column: Image & Testimonial (70% width) */}
-            <div className="relative h-full mb-4 md:mb-0 md:mr-4">
-              {/* Main Image Container */}
-              <div className="rounded-2xl overflow-hidden shadow-lg h-[400px] lg:h-[500px] w-full">
-                <img
-                  src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                  alt="Customer Support Agent"
-                  className="w-full h-full object-cover object-top"
-                />
-              </div>
+    <section className="relative overflow-hidden mt-10">
+      <div className="w-full">
+        {/* Full Width Image Slider Container */}
+        <div className="relative h-[500px] lg:h-[600px] w-full overflow-hidden group">
+          {/* Slider Images with Overlay */}
+          {slides.map((slide, index) => (
+            <div
+              key={index}
+              className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+                index === currentSlide ? "opacity-100" : "opacity-0"
+              }`}
+            >
+              {/* Background Image */}
+              <img
+                src={slide.image}
+                alt={`Slide ${index + 1}`}
+                className="w-full h-full object-cover object-center"
+              />
 
-              {/* Floating Testimonial Card */}
-              {/* <div className="bg-white p-6 rounded-2xl shadow-xl absolute top-1/2 -translate-y-1/2 left-4 lg:-left-8 max-w-xs w-[calc(100%-2rem)] lg:w-80 z-10 border border-gray-100">
-                <div className="flex items-center gap-3 mb-2">
-                  <img
-                    src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    alt="User Avatar"
-                    className="w-10 h-10 rounded-full object-cover"
-                  />
-                  <span className="font-bold text-gray-900">Denny Jones</span>
-                </div>
-                <p className="text-gray-600 text-sm mb-2 text-left leading-relaxed">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Vehicula massa in enim luctus. Rutrum arcu.
-                </p>
-                <div className="flex gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <FaStar key={i} className="text-yellow-400"/>
-                  ))}
-                </div>
-              </div> */}
-            </div>
+              {/* Dark Overlay for better text readability */}
+              <div className="absolute inset-0 bg-black/40"></div>
 
-            {/* Right Column: CTA Card (30% width) */}
-            <div className="relative h-[400px] lg:h-[500px] w-full rounded-2xl p-6 lg:p-8 flex items-center bg-gradient-to-br from-[#BC55D8] via-[#B06CE5] to-[#9FD6FF]">
-              {/* White Content Box */}
-              <div className="bg-white rounded-3xl p-6 lg:p-8 w-full shadow-2xl flex flex-col justify-center h-auto min-h-[60%]">
-                <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4 leading-tight">
-                  Ready to Scale <br className="hidden lg:block" /> Customer
-                  Support?
-                </h2>
-                <p className="text-gray-500 mb-6 text-sm leading-relaxed">
-                  Get a customized pricing estimate or connect directly with our
-                  experts.
-                </p>
-
-                {/* Buttons stack on the narrower 30% column to prevent breaking */}
-                <div className="flex flex-col gap-3">
-                  <button className="bg-black text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-gray-800 transition-colors duration-200 text-center cursor-pointer">
-                    Get a Free Quote
-                  </button>
-                  <Link
-                    className="bg-white text-gray-700 border border-gray-300 px-6 py-3 rounded-full text-sm font-medium hover:bg-gray-50 transition-colors duration-200 text-center cursor-pointer"
-                    href="/contact"
-                  >
-                    Talk to an expert
-                  </Link>
+              {/* Text Content Overlay */}
+              <div className="absolute inset-0 flex items-center justify-center px-4 sm:px-6 lg:px-8">
+                <div className="max-w-5xl w-full text-center text-white">
+                  <h1 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold tracking-tight mb-4 drop-shadow-lg">
+                    {slide.title}
+                  </h1>
+                  <p className="text-xl sm:text-2xl lg:text-3xl font-semibold mb-6 drop-shadow-md">
+                    {slide.subtitle}
+                  </p>
+                  <p className="text-sm sm:text-base lg:text-lg max-w-3xl mx-auto leading-relaxed drop-shadow-md">
+                    {slide.description}
+                  </p>
                 </div>
               </div>
             </div>
+          ))}
+
+          {/* Navigation Buttons */}
+          <button
+            onClick={prevSlide}
+            className="absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-3 rounded-full shadow-lg transition-all duration-200 opacity-0 group-hover:opacity-100 z-10"
+            aria-label="Previous slide"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+          <button
+            onClick={nextSlide}
+            className="absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-3 rounded-full shadow-lg transition-all duration-200 opacity-0 group-hover:opacity-100 z-10"
+            aria-label="Next slide"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
+
+          {/* Slide Indicators */}
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+            {slides.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentSlide(index)}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  index === currentSlide
+                    ? "bg-white w-8"
+                    : "bg-white/50 hover:bg-white/75 w-2"
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
           </div>
-        </section>
+        </div>
         {/* <h5 className="text-xs md:text-lg text-gray-500 flex items-center justify-center">
           <Dot className="text-green-500 h-12 w-12" /> 24/7 availability, 40%
           cost savings, multilingual reach
         </h5> */}
-        <h1 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold tracking-tight text-gray-900 my-6">
+        {/* <h1 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold tracking-tight text-gray-900 my-6">
           <span className="block">Powering World-Class Customer</span>
           <span>Support for </span>
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-primary">
@@ -83,7 +132,7 @@ export default function Hero() {
         <p className="mt-4 max-w-2xl mx-auto text-xs md:text-lg text-gray-500 mb-10">
           Where technology, talent, and 24/7 operations come together to power
           exceptional service.
-        </p>
+        </p> */}
       </div>
     </section>
   );

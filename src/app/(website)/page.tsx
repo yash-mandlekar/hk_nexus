@@ -40,7 +40,7 @@ export default function Home() {
     <div className="min-h-screen bg-white font-sans text-gray-900">
       <main>
         <Hero />
-        <section className="my-30 py-16 px-6 bg-gradient-to-r from-primary via-[#7a6ce4] to-secondary text-white shadow-xl">
+        <section className="mb-30 py-16 px-6 bg-gradient-to-r from-primary via-[#7a6ce4] to-secondary text-white shadow-xl">
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
               {stats.map((stat, index) => (
