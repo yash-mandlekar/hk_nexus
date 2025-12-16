@@ -47,7 +47,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative overflow-hidden mt-10">
+    <section className="relative overflow-hidden">
       <div className="w-full">
         {/* Full Width Image Slider Container */}
         <div className="relative h-[500px] lg:h-[600px] w-full overflow-hidden group">
