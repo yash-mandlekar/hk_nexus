@@ -2,6 +2,7 @@
 import Hero from "@/components/Hero";
 import ServicesSection from "@/components/Services";
 import WhyHKNexus from "@/components/WhyHKNexus";
+import ClientTestimonials from "@/components/ClientTestimonials";
 import BlogSection from "@/components/BlogSection";
 import FAQSection from "@/components/AccordionItem";
 import NewsletterSection from "@/components/NewsletterSection";
@@ -64,6 +65,7 @@ export default function Home() {
         </section>
         <ServicesSection />
         <WhyHKNexus />
+        <ClientTestimonials />
         <FAQSection />
         <NewsletterSection />
       </main>

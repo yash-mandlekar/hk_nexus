@@ -23,7 +23,7 @@ const Footer = () => {
           <div className="lg:col-span-4 flex flex-col items-start">
             <div className="relative w-48 h-24">
               <Image
-                src="/logo21.png"
+                src="/logo.png"
                 alt="HK Nexus Global"
                 fill
                 className="object-contain object-left"
@@ -90,28 +90,26 @@ const Footer = () => {
               Quick Links
             </h3>
             <ul className="space-y-5">
-              {["About Us", "Services", "Why HK Nexus", "Contact Us"].map(
-                (item) => (
-                  <li key={item}>
-                    <Link
-                      href={
-                        item === "Contact Us"
-                          ? "/contact"
-                          : item === "About Us"
-                          ? "/about"
-                          : item === "Services"
-                          ? "/services"
-                          : item === "Why HK Nexus"
-                          ? "/why-hk-nexus"
-                          : "#"
-                      }
-                      className="text-gray-600 hover:text-[#594ad2] transition-colors font-medium text-[15px]"
-                    >
-                      {item}
-                    </Link>
-                  </li>
-                )
-              )}
+              {["About Us", "Services", "Careers", "Contact Us"].map((item) => (
+                <li key={item}>
+                  <Link
+                    href={
+                      item === "Contact Us"
+                        ? "/contact"
+                        : item === "About Us"
+                        ? "/about"
+                        : item === "Services"
+                        ? "/services"
+                        : item === "Careers"
+                        ? "/careers"
+                        : "#"
+                    }
+                    className="text-gray-600 hover:text-[#594ad2] transition-colors font-medium text-[15px]"
+                  >
+                    {item}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -129,7 +127,7 @@ const Footer = () => {
               ].map((item) => (
                 <li key={item}>
                   <Link
-                    href="#"
+                    href="/services"
                     className="text-gray-600 hover:text-[#594ad2] transition-colors font-medium text-[15px]"
                   >
                     {item}

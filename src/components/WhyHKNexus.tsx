@@ -1,6 +1,13 @@
 "use client";
 import React, { useState } from "react";
-import { User, HeartHandshake, RefreshCw, X } from "lucide-react";
+import {
+  CheckCircle2,
+  Users,
+  DollarSign,
+  Globe,
+  Shield,
+  X,
+} from "lucide-react";
 
 const WhyHKNexus = () => {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
@@ -8,24 +15,41 @@ const WhyHKNexus = () => {
 
   const cards = [
     {
-      label: "VISION",
-      title: "Leadership That Sets Standards",
-      description: "Focused on excellence, guided by experts.",
-      icon: <User className="w-6 h-6 text-gray-700" strokeWidth={1.5} />,
-    },
-    {
-      label: "ALWAYS",
-      title: "Global Support, Anytime",
-      description: "Multilingual teams delivering 24/7 coverage.",
+      label: "RELIABILITY",
+      title: "Reliable & Consistent Delivery",
+      description:
+        "Clients trust us to deliver on time, every time — with clear SLAs, real accountability, and zero guesswork.",
       icon: (
-        <HeartHandshake className="w-6 h-6 text-gray-700" strokeWidth={1.5} />
+        <CheckCircle2 className="w-6 h-6 text-gray-700" strokeWidth={1.5} />
       ),
     },
     {
-      label: "INTEGRATION",
-      title: "Technology + Talent Aligned",
-      description: "Advanced systems paired with human precision.",
-      icon: <RefreshCw className="w-6 h-6 text-gray-700" strokeWidth={1.5} />,
+      label: "EXPERTISE",
+      title: "Skilled, Well-Trained Teams",
+      description:
+        "Our agents are professionally trained in communication, compliance, and customer empathy — ensuring every interaction reflects your brand positively.",
+      icon: <Users className="w-6 h-6 text-gray-700" strokeWidth={1.5} />,
+    },
+    {
+      label: "VALUE",
+      title: "Cost-Effective Without Compromise",
+      description:
+        "We offer enterprise-level service quality at competitive pricing, helping businesses scale efficiently without sacrificing performance.",
+      icon: <DollarSign className="w-6 h-6 text-gray-700" strokeWidth={1.5} />,
+    },
+    {
+      label: "GLOBAL",
+      title: "Global Coverage, Local Understanding",
+      description:
+        "With experience serving multiple regions and time zones, we provide 24/7 support while understanding local customer expectations.",
+      icon: <Globe className="w-6 h-6 text-gray-700" strokeWidth={1.5} />,
+    },
+    {
+      label: "SECURITY",
+      title: "Secure & Process-Driven Operations",
+      description:
+        "Data privacy, compliance, and structured workflows are built into everything we do — giving clients complete peace of mind.",
+      icon: <Shield className="w-6 h-6 text-gray-700" strokeWidth={1.5} />,
     },
   ];
 
@@ -37,9 +61,24 @@ const WhyHKNexus = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
             Why HK Nexus
           </h2>
-          <p className="text-gray-500 text-lg md:text-xl font-medium">
-            Where Expertise, Reliability, and Global Support Come Together
+          <p className="text-gray-500 text-lg md:text-xl font-medium max-w-4xl mx-auto">
+            At HK Nexus, we don't just provide services — we build long-term
+            partnerships. Businesses choose us because we combine people,
+            process, and technology to deliver consistent, measurable results
+            with a human touch.
           </p>
+          <p className="text-gray-500 text-base md:text-lg font-medium max-w-3xl mx-auto mt-3">
+            Our clients value us for our responsiveness, transparency, and
+            commitment to quality, making us a trusted extension of their own
+            teams.
+          </p>
+        </div>
+
+        {/* Section Title */}
+        <div className="text-center mb-10">
+          <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+            What Clients Appreciate About HK Nexus
+          </h3>
         </div>
 
         {/* --- Video Thumbnail Section --- */}
@@ -108,11 +147,13 @@ const WhyHKNexus = () => {
         )}
 
         {/* Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {cards.map((card, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl p-8 shadow-sm flex flex-col hover:shadow-md transition-shadow duration-300"
+              className={`bg-white rounded-xl p-8 shadow-sm flex flex-col hover:shadow-md transition-shadow duration-300 ${
+                index === 3 || index === 4 ? "md:col-span-1 lg:col-span-1" : ""
+              }`}
             >
               <div className="flex justify-between items-end border-b border-gray-200 pb-4 mb-6">
                 <div className="p-2 bg-transparent">{card.icon}</div>

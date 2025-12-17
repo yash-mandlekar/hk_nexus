@@ -7,6 +7,7 @@ export default function Hero() {
 
   const slides = [
     {
+      type: "image" as const,
       image: "/images/slider/1.png",
       title: "Customer Service in 360-degree",
       subtitle: "Scalable, virtual, and real",
@@ -14,6 +15,7 @@ export default function Hero() {
         "AI-powered contact center service provider that provides a full range of services intended to improve the client experience for companies all over the world. Examine our options.",
     },
     {
+      type: "image" as const,
       image: "/images/slider/2.png",
       title: "INTELLIGENCE ORCHESTRATION WITH EXCELLENCE",
       subtitle: "AI that grows. knowledge that lasts.",
@@ -21,11 +23,20 @@ export default function Hero() {
         "At HK Nexus Global, we combine innovation and AI-powered solutions with human knowledge to improve experience and performance at every stage. We create solutions that are tailored to your objectives and environment thanks to our extensive industry knowledge and decades of operational expertise. We precisely handle changing demands, issues, and goals while guiding customers through their transformation journey in a clear and collaborative manner.",
     },
     {
+      type: "image" as const,
       image: "/images/slider/3.png",
       title: "Powering Global Business Excellence",
       subtitle: "Technology meets human expertise",
       description:
         "Delivering world-class customer support solutions that combine cutting-edge AI technology with experienced professionals. We empower businesses worldwide with 24/7 multilingual support, ensuring exceptional service delivery across all touchpoints and driving measurable results for your organization.",
+    },
+    {
+      type: "video" as const,
+      video: "/videos/slider_video.mp4",
+      title: "Experience Excellence in Action",
+      subtitle: "See our solutions come to life",
+      description:
+        "Watch how we transform customer experiences through innovative technology and dedicated support teams working around the clock to deliver exceptional results.",
     },
   ];
 
@@ -51,7 +62,7 @@ export default function Hero() {
       <div className="w-full">
         {/* Full Width Image Slider Container */}
         <div className="relative h-[500px] lg:h-[600px] w-full overflow-hidden group">
-          {/* Slider Images with Overlay */}
+          {/* Slider Images/Videos with Overlay */}
           {slides.map((slide, index) => (
             <div
               key={index}
@@ -59,12 +70,23 @@ export default function Hero() {
                 index === currentSlide ? "opacity-100" : "opacity-0"
               }`}
             >
-              {/* Background Image */}
-              <img
-                src={slide.image}
-                alt={`Slide ${index + 1}`}
-                className="w-full h-full object-cover object-center"
-              />
+              {/* Background Image or Video */}
+              {slide.type === "image" ? (
+                <img
+                  src={slide.image}
+                  alt={`Slide ${index + 1}`}
+                  className="w-full h-full object-cover object-center"
+                />
+              ) : (
+                <video
+                  src={slide.video}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-full object-cover object-center"
+                />
+              )}
 
               {/* Dark Overlay for better text readability */}
               <div className="absolute inset-0 bg-black/40"></div>

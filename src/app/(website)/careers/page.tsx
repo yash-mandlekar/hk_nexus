@@ -15,6 +15,7 @@ export default function CareersPage() {
   const [resumeFile, setResumeFile] = useState<File | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [selectedState, setSelectedState] = useState("All States");
   const [selectedCity, setSelectedCity] = useState("All Cities");
@@ -180,7 +181,6 @@ export default function CareersPage() {
           <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight text-gray-900 mb-6">
             <span>Build Your</span>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
-              {" "}
               Career With Us
             </span>
           </h1>
@@ -222,6 +222,41 @@ export default function CareersPage() {
             </p>
           </div>
 
+          {/* --- Video Thumbnail Section --- */}
+          <div
+            className="relative w-full h-[300px] md:h-[450px] lg:h-[500px] rounded-xl overflow-hidden shadow-sm mb-12 group cursor-pointer"
+            onClick={() => setIsVideoOpen(true)}
+          >
+            {/* Video Thumbnail - Auto-playing preview */}
+            <video
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              autoPlay
+              loop
+              muted
+              playsInline
+            >
+              <source src="/videos/home_video.mp4" type="video/mp4" />
+            </video>
+
+            {/* Overlay (Darken) */}
+            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-300" />
+
+            {/* Play Button */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+              <div className="w-20 h-20 rounded-full border-[3px] border-white flex items-center justify-center backdrop-blur-sm transition-transform duration-300 group-hover:scale-110 shadow-lg">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="white"
+                  className="ml-1"
+                >
+                  <path d="M5 3l14 9-14 9V3z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {benefits.map((benefit, index) => (
               <div
@@ -247,6 +282,32 @@ export default function CareersPage() {
         </div>
       </section>
 
+      {/* --- Video Popup Modal --- */}
+      {isVideoOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 transition-opacity duration-300"
+          onClick={() => setIsVideoOpen(false)} // Close when clicking background
+        >
+          <div
+            className="relative w-full max-w-5xl aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl animate-in fade-in zoom-in duration-300"
+            onClick={(e) => e.stopPropagation()} // Prevent close when clicking inside video container
+          >
+            {/* Close Button */}
+            <button
+              onClick={() => setIsVideoOpen(false)}
+              className="absolute top-4 right-4 z-10 p-2 bg-black/50 hover:bg-black/70 rounded-full text-white transition-colors"
+            >
+              <X className="w-6 h-6" />
+            </button>
+
+            {/* HTML5 Video Player */}
+            <video className="w-full h-full" controls autoPlay playsInline>
+              <source src="/videos/home_video.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      )}
       {/* --- Current Openings Section --- */}
       <section id="openings" className="w-full py-20 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
