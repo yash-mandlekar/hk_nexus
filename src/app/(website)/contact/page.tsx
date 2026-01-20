@@ -3,6 +3,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FAQSection from "@/components/AccordionItem";
+import ScrollToTop from "@/components/ScrollToTop";
 import {
   Mail,
   MapPin,
@@ -46,7 +47,7 @@ export default function ContactPage() {
 
       if (response.ok) {
         toast.success(
-          "Thank you for your message! We will get back to you soon."
+          "Thank you for your message! We will get back to you soon.",
         );
         setFormData({
           name: "",
@@ -67,7 +68,7 @@ export default function ContactPage() {
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -148,7 +149,12 @@ export default function ContactPage() {
                     <h3 className="text-lg font-semibold text-gray-900 mb-1">
                       Email
                     </h3>
-                    <p className="text-gray-600">info@hknexusglobal.com</p>
+                    <a
+                      href="mailto:info@hknexusglobal.com"
+                      className="text-primary hover:underline"
+                    >
+                      info@hknexusglobal.com
+                    </a>
                     <p className="text-gray-500 text-sm mt-1">
                       Online support 24/7
                     </p>
@@ -164,9 +170,9 @@ export default function ContactPage() {
                       Office
                     </h3>
                     <p className="text-gray-600">
-                      123 Business Avenue, Suite 100
+                      MP Nagar, Zone I
                       <br />
-                      New York, NY 10001
+                      Bhopal, Madhya Pradesh
                     </p>
                   </div>
                 </div>
@@ -384,6 +390,7 @@ export default function ContactPage() {
         {/* FAQ Section */}
         <FAQSection />
       </main>
+      <ScrollToTop />
     </div>
   );
 }

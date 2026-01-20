@@ -15,10 +15,38 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "HK Nexus",
-  description: "BPO Solutions",
+  title: {
+    default: "HK Nexus Global | Premium BPO & Customer Experience Solutions",
+    template: "%s | HK Nexus Global",
+  },
+  description:
+    "HK Nexus Global delivers world-class BPO solutions, customer support, and customer experience services across Asia. 50+ workforce, 5+ languages, 10+ satisfied clients.",
+  keywords: [
+    "BPO services",
+    "customer support",
+    "call center",
+    "customer experience",
+    "outsourcing",
+    "Asia BPO",
+    "multilingual support",
+    "HK Nexus Global",
+  ],
+  authors: [{ name: "HK Nexus Global" }],
+  openGraph: {
+    title: "HK Nexus Global | Premium BPO & Customer Experience Solutions",
+    description:
+      "World-class BPO solutions and customer experience services across Asia. 24/7 multilingual support.",
+    url: "https://hknexusglobal.com",
+    siteName: "HK Nexus Global",
+    type: "website",
+    locale: "en_US",
+  },
   icons: {
     icon: "/fav.png",
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 

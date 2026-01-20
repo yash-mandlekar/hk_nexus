@@ -41,6 +41,7 @@ const ClientTestimonials = () => {
     "Secure, compliant operations",
     "Fast onboarding & agile scaling",
     "Cost-effective without cutting corners",
+    "AI-assisted operations with real-time performance tracking and uptime assurance",
   ];
 
   return (
@@ -68,25 +69,46 @@ const ClientTestimonials = () => {
           </h3>
         </div>
 
-        {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16 px-12">
+        {/* Testimonials Grid - 2x3 format on desktop */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 px-12">
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="bg-gray-50 rounded-xl p-8 shadow-sm flex flex-col hover:shadow-md transition-shadow duration-300 border border-gray-100 relative"
+              className="group relative bg-white rounded-2xl p-8 shadow-lg border border-gray-100 flex flex-col overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 hover:border-transparent"
             >
-              {/* Quote Icon */}
-              <div className="absolute top-6 right-6 opacity-10">
-                <Quote className="w-12 h-12 text-gray-900" />
+              {/* Gradient border on hover */}
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary via-secondary to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10 blur-sm scale-[1.02]" />
+              <div className="absolute inset-[2px] rounded-2xl bg-white -z-10" />
+
+              {/* Quote Icon with animation */}
+              <div className="absolute top-4 right-4 transition-all duration-500 group-hover:scale-125 group-hover:rotate-12">
+                <div className="bg-gradient-to-br from-primary/10 to-secondary/10 p-3 rounded-full group-hover:from-primary/20 group-hover:to-secondary/20 transition-colors duration-500">
+                  <Quote className="w-6 h-6 text-primary/50 group-hover:text-primary transition-colors duration-500" />
+                </div>
               </div>
 
-              <div className="relative z-10">
-                <h4 className="text-lg font-bold text-gray-900 mb-4 leading-tight">
-                  {testimonial.title}
-                </h4>
-                <p className="text-gray-600 font-medium text-sm leading-relaxed italic">
+              <div className="relative z-10 flex flex-col h-full">
+                {/* Title with underline animation */}
+                <div className="mb-4">
+                  <h4 className="text-xl font-bold text-gray-900 mb-2 leading-tight group-hover:text-primary transition-colors duration-300">
+                    {testimonial.title}
+                  </h4>
+                  <div className="h-1 w-12 bg-gradient-to-r from-primary to-secondary rounded-full transition-all duration-500 group-hover:w-24" />
+                </div>
+
+                {/* Quote text with theme color on hover */}
+                <p className="text-gray-600 font-medium text-sm leading-relaxed flex-grow transition-colors duration-500 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-secondary">
                   "{testimonial.quote}"
                 </p>
+
+                {/* Decorative element */}
+                <div className="mt-6 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <div className="h-px flex-grow bg-gradient-to-r from-primary/30 to-transparent" />
+                  <span className="text-xs font-semibold text-primary/70">
+                    HK Nexus
+                  </span>
+                  <div className="h-px flex-grow bg-gradient-to-l from-secondary/30 to-transparent" />
+                </div>
               </div>
             </div>
           ))}
@@ -110,13 +132,17 @@ const ClientTestimonials = () => {
         </div>
 
         {/* Closing Statement */}
-        <div className="text-center bg-gray-50 rounded-xl p-8 border border-gray-100 mx-12">
-          <h4 className="text-xl md:text-2xl font-bold text-gray-900 mb-3">
+        <div className="text-center bg-gradient-to-br from-primary/5 via-white to-secondary/5 rounded-2xl p-10 border border-primary/20 mx-12 relative overflow-hidden">
+          {/* Decorative gradient accents */}
+          <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-primary/10 to-transparent rounded-full -translate-x-1/2 -translate-y-1/2" />
+          <div className="absolute bottom-0 right-0 w-40 h-40 bg-gradient-to-tl from-secondary/10 to-transparent rounded-full translate-x-1/2 translate-y-1/2" />
+
+          <h4 className="text-xl md:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary mb-4 relative z-10">
             In One Line
           </h4>
-          <p className="text-gray-600 text-base md:text-lg leading-relaxed max-w-4xl mx-auto">
+          <p className="text-gray-700 text-base md:text-lg leading-relaxed max-w-4xl mx-auto relative z-10">
             HK Nexus is seen globally as a{" "}
-            <span className="font-semibold text-gray-900">
+            <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
               premium service partner
             </span>
             —where trust meets performance, and customer experience becomes a

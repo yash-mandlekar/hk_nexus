@@ -4,35 +4,35 @@ import ServicesSection from "@/components/Services";
 import WhyHKNexus from "@/components/WhyHKNexus";
 import ClientTestimonials from "@/components/ClientTestimonials";
 import BlogSection from "@/components/BlogSection";
-import FAQSection from "@/components/AccordionItem";
 import NewsletterSection from "@/components/NewsletterSection";
 import QuickConnectButton from "@/components/QuickConnectButton";
 import ScrollToTop from "@/components/ScrollToTop";
+import ClientLogosMarquee from "@/components/ClientLogosMarquee";
 import { Users, Globe, Briefcase, Building2 } from "lucide-react";
 import AnimatedCounter from "@/components/AnimatedCounter";
 
 export default function Home() {
   const stats = [
     {
-      value: 500,
+      value: 50,
       suffix: "+",
       label: "Our incredible Workforce",
       icon: <Users className="w-8 h-8 text-white" />,
     },
     {
-      value: 16,
+      value: 5,
       suffix: "+",
       label: "Languages",
       icon: <Globe className="w-8 h-8 text-white" />,
     },
     {
-      value: 10,
+      value: 5,
       suffix: "+",
       label: "Industries Served",
       icon: <Briefcase className="w-8 h-8 text-white" />,
     },
     {
-      value: 5,
+      value: 10,
       suffix: "+",
       label: "Clients",
       icon: <Building2 className="w-8 h-8 text-white" />,
@@ -68,7 +68,7 @@ export default function Home() {
         <ServicesSection />
         <WhyHKNexus />
         <ClientTestimonials />
-        <FAQSection />
+        <ClientLogosMarquee />
         <NewsletterSection />
       </main>
 

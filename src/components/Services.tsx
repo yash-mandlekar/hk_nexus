@@ -12,9 +12,9 @@ import {
 // 1. Define the Data
 const services = [
   {
-    title: "Customized Solutions, Worldwide Reach",
+    title: "Customized Solutions, Strong Presence Across Asia",
     description:
-      "Our unique CX solutions at HK Nexus Global are built on a foundation of cutting-edge technology, team expertise, and agility. We are able to anticipate consumer needs and continuously surpass their expectations thanks to this combination.",
+      "At HK Nexus Global, our customer experience solutions are thoughtfully designed for the Asian market, combining advanced technology, regional expertise, and operational agility.This integrated approach allows us to understand evolving customer behaviors, anticipate market demands, and consistently deliver experiences that exceed expectations across diverse industries.",
     icon: (
       <Settings
         className="w-10 h-10"
@@ -23,9 +23,9 @@ const services = [
     ),
   },
   {
-    title: "Worldwide Assistance",
+    title: "Pan-Asia Support & Regional Expertise",
     description:
-      "HK Nexus Global, which has strategically placed offices all around the world, provides multilingual services, round-the-clock assistance, and a thorough awareness of various cultural nuances with the goal of increasing client satisfaction.",
+      "With a strong operational presence across key Asian markets, HK Nexus Global delivers multilingual, culturally aware, and region-specific support. Our teams provide 24/7 assistance, deeply understanding local languages, business practices, and customer expectations — enabling our clients to connect more effectively with their audiences throughout Asia. We don’t just support businesses — we help them build trust, relevance, and long-term relationships within the region.",
     icon: (
       <Globe className="w-10 h-10" style={{ stroke: "url(#icon-gradient)" }} />
     ),
@@ -61,24 +61,6 @@ const ServicesSection = () => {
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header Section */}
-        <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
-          <div className="max-w-2xl text-left">
-            <h2 className="text-3xl md:text-3xl xl:text-3xl font-bold text-gray-900 mb-4 tracking-tight">
-              Our Services
-            </h2>
-            <p className="text-gray-500 text-lg leading-relaxed">
-              Your trusted partner for customer support, sales, and multilingual
-              communication.
-            </p>
-          </div>
-
-          <Link
-            href="/services"
-            className="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg text-sm font-semibold transition-colors shadow-lg shadow-primary/30 flex-shrink-0"
-          >
-            View All Services
-          </Link>
-        </div>
 
         {/* Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -102,7 +84,8 @@ const ServicesSection = () => {
 
               {/* Card Footer Button */}
               {/* Using CSS variables for the exact gradient: secondary (pink) -> primary (purple) */}
-              <button
+              <Link
+                href="/contact"
                 className="w-full py-4 px-6 flex justify-between items-center text-white font-medium transition-opacity hover:opacity-90 cursor-pointer"
                 style={{
                   background: `linear-gradient(to right, var(--secondary), var(--primary))`,
@@ -112,7 +95,7 @@ const ServicesSection = () => {
                   Book a Consultation
                 </span>
                 <Calendar className="w-5 h-5 opacity-90" />
-              </button>
+              </Link>
             </div>
           ))}
         </div>

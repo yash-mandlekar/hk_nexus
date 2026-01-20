@@ -1,14 +1,7 @@
 "use client";
 
 import React from "react";
-import {
-  Instagram,
-  Facebook,
-  ArrowRight,
-  Linkedin,
-  Youtube,
-  Twitter,
-} from "lucide-react";
+import { Instagram, Facebook, ArrowRight, Linkedin } from "lucide-react";
 import Link from "next/link";
 
 import Image from "next/image";
@@ -72,20 +65,6 @@ const Footer = () => {
                   />
                 </div>
               </Link>
-              <Link
-                href="#"
-                aria-label="YouTube"
-                className="text-gray-900 hover:text-gray-600 hover:scale-110 transition-all duration-300"
-              >
-                <Youtube strokeWidth={2} className="w-7 h-7" />
-              </Link>
-              <Link
-                href="#"
-                aria-label="Twitter"
-                className="text-gray-900 hover:text-gray-600 hover:scale-110 transition-all duration-300"
-              >
-                <Twitter strokeWidth={2} className="w-7 h-7" />
-              </Link>
             </div>
           </div>
 
@@ -105,12 +84,12 @@ const Footer = () => {
                       item === "Contact Us"
                         ? "/contact"
                         : item === "About Us"
-                        ? "/about"
-                        : item === "Services"
-                        ? "/services"
-                        : item === "Careers"
-                        ? "/careers"
-                        : "#"
+                          ? "/about"
+                          : item === "Services"
+                            ? "/services"
+                            : item === "Careers"
+                              ? "/careers"
+                              : "#"
                     }
                     className="text-gray-600 hover:text-[#594ad2] transition-colors font-medium text-[15px]"
                   >
@@ -184,11 +163,17 @@ const Footer = () => {
           </p>
 
           <div className="flex items-center gap-6 text-gray-500 text-sm font-medium">
-            <Link href="#" className="hover:text-gray-900 transition-colors">
+            <Link
+              href="/privacy"
+              className="hover:text-gray-900 transition-colors"
+            >
               Privacy Policy
             </Link>
             <span className="text-gray-300">|</span>
-            <Link href="#" className="hover:text-gray-900 transition-colors">
+            <Link
+              href="/terms"
+              className="hover:text-gray-900 transition-colors"
+            >
               Terms of Service
             </Link>
           </div>

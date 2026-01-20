@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import ScrollToTop from "@/components/ScrollToTop";
 
 export default function AboutPage() {
   const values = [
@@ -39,12 +40,12 @@ export default function AboutPage() {
 
   const stats = [
     {
-      value: "500+",
+      value: "10+",
       label: "Happy Clients",
       icon: <Users className="w-8 h-8 text-white" />,
     },
     {
-      value: "50+",
+      value: "1+",
       label: "Countries Served",
       icon: <Globe className="w-8 h-8 text-white" />,
     },
@@ -63,21 +64,21 @@ export default function AboutPage() {
   const testimonials = [
     {
       quote:
-        "HK Nexus transformed our customer support operations. Their team is professional, efficient, and truly cares about our success.",
-      author: "David Miller",
-      role: "COO, TechStream",
+        "HK Nexus has been a valuable partner in managing our operations and supply chain. Their professionalism and dedication to delivering results have made a significant positive impact on our business.",
+      author: "Syed Adnan Ali",
+      role: "Operations & Supply Chain Partner, Rana Arts",
     },
     {
       quote:
-        "The level of dedication and expertise they bring to the table is unmatched. We've seen a significant improvement in customer satisfaction.",
-      author: "Elena Rodriguez",
-      role: "Director of Operations, GlobalRetail",
+        "Working with HK Nexus Global has been a great experience. Their team's expertise in business growth and digital solutions has helped us scale effectively and reach new markets.",
+      author: "Sikander Khan",
+      role: "Business & Digital Growth Partner, Biznweb",
     },
     {
       quote:
-        "Partnering with HK Nexus was one of the best decisions we made. They seamlessly integrated with our team and processes.",
-      author: "James Carter",
-      role: "CEO, FinServe",
+        "The customer support and digital solutions provided by HK Nexus Global have been exceptional. Their reliable service and responsive team have greatly enhanced our customer experience.",
+      author: "Rahul Kure",
+      role: "Digital & Customer Support Partner, BlinkHost",
     },
   ];
 
@@ -106,9 +107,8 @@ export default function AboutPage() {
         <section className="bg-gradient-to-br from-gray-50 via-white to-accent/10 py-14 xl:py-16 px-6 xl:px-12">
           <div className="max-w-6xl mx-auto text-center">
             <h1 className="text-3xl sm:text-4xl lg:text-4xl xl:text-4xl font-extrabold tracking-tight text-gray-900 mb-6">
-              About{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
-                HK Nexus
+                HK Nexus Global
               </span>
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -121,12 +121,13 @@ export default function AboutPage() {
         {/* Our Story Section */}
         <section className="pb-14 xl:pb-16 px-6 xl:px-12">
           <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="relative h-[400px] bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden shadow-inner">
-              {/* Placeholder for Story Image */}
-              <div className="absolute inset-0 flex items-center justify-center text-gray-400">
-                <Users className="w-20 h-20 opacity-20" />
-                <span className="sr-only">Office Image Placeholder</span>
-              </div>
+            <div className="relative h-[400px] rounded-2xl overflow-hidden shadow-xl">
+              <Image
+                src="/images/about/about-1.png"
+                alt="HK Nexus Global Office"
+                fill
+                className="object-cover"
+              />
             </div>
             <div>
               <h2 className="text-3xl md:text-3xl xl:text-3xl font-bold text-gray-900 mb-6">
@@ -163,6 +164,18 @@ export default function AboutPage() {
                   inspire, and elevate every business we serve.
                 </p>
               </div>
+            </div>
+          </div>
+
+          {/* Second Image Section */}
+          <div className="max-w-3xl mx-auto mt-16">
+            <div className="relative h-[400px] lg:h-[500px] rounded-2xl overflow-hidden shadow-xl">
+              <Image
+                src="/images/about/about-2.png"
+                alt="HK Nexus Global Team"
+                fill
+                className="object-contain"
+              />
             </div>
           </div>
         </section>
@@ -263,36 +276,41 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Team Section */}
-        <section className="py-14 xl:py-16 px-6 xl:px-12 bg-gray-50">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-3xl xl:text-3xl font-bold text-gray-900 mb-4">
-                Meet Our Team
-              </h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
-                The passionate individuals driving our mission forward.
-              </p>
-            </div>
+        {/* Team Section - Disabled */}
+        {false && (
+          <section className="py-14 xl:py-16 px-6 xl:px-12 bg-gray-50 opacity-60">
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-16">
+                <h2 className="text-3xl md:text-3xl xl:text-3xl font-bold text-gray-900 mb-4">
+                  Meet Our Team
+                </h2>
+                <p className="text-gray-600 max-w-2xl mx-auto mb-4">
+                  The passionate individuals driving our mission forward.
+                </p>
+                <span className="inline-block px-4 py-2 rounded-full bg-amber-100 text-amber-700 text-sm font-semibold">
+                  Future update pending
+                </span>
+              </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {team.map((member, index) => (
-                <div key={index} className="text-center group">
-                  <div className="relative w-48 h-48 mx-auto mb-6 bg-gray-200 rounded-full overflow-hidden border-4 border-white shadow-lg group-hover:border-accent transition-colors duration-300">
-                    {/* Placeholder for Team Image */}
-                    <div className="absolute inset-0 flex items-center justify-center bg-gray-100 text-gray-400 group-hover:bg-gray-200 transition-colors">
-                      <Users className="w-16 h-16 opacity-30" />
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pointer-events-none">
+                {team.map((member, index) => (
+                  <div key={index} className="text-center group">
+                    <div className="relative w-48 h-48 mx-auto mb-6 bg-gray-200 rounded-full overflow-hidden border-4 border-white shadow-lg">
+                      {/* Placeholder for Team Image */}
+                      <div className="absolute inset-0 flex items-center justify-center bg-gray-100 text-gray-400">
+                        <Users className="w-16 h-16 opacity-30" />
+                      </div>
                     </div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-1">
+                      {member.name}
+                    </h3>
+                    <p className="text-primary font-medium">{member.role}</p>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-1">
-                    {member.name}
-                  </h3>
-                  <p className="text-primary font-medium">{member.role}</p>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        )}
 
         {/* CTA Section */}
         <section className="py-14 xl:py-16 px-6 xl:px-12 bg-gradient-to-br from-primary to-secondary text-white relative overflow-hidden">
@@ -318,6 +336,7 @@ export default function AboutPage() {
           </div>
         </section>
       </main>
+      <ScrollToTop />
     </div>
   );
 }

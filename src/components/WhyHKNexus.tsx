@@ -1,6 +1,13 @@
 "use client";
 import React, { useRef, useEffect } from "react";
-import { CheckCircle2, Users, DollarSign, Globe, Shield } from "lucide-react";
+import {
+  CheckCircle2,
+  Users,
+  DollarSign,
+  Globe,
+  Shield,
+  Bot,
+} from "lucide-react";
 
 const WhyHKNexus = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -78,6 +85,19 @@ const WhyHKNexus = () => {
         />
       ),
     },
+    {
+      label: "AI-POWERED",
+      title: "AI-Assisted Operations",
+      description:
+        "AI-assisted operations with real-time performance tracking and uptime assurance.",
+      icon: (
+        <Bot
+          className="w-6 h-6 text-gray-700"
+          strokeWidth={1.5}
+          style={{ stroke: "url(#icon-gradient)" }}
+        />
+      ),
+    },
   ];
 
   return (
@@ -88,13 +108,13 @@ const WhyHKNexus = () => {
           <h2 className="text-3xl md:text-3xl xl:text-3xl font-bold text-gray-900 mb-4 tracking-tight">
             Why HK Nexus
           </h2>
-          <p className="text-gray-500 text-lg md:text-xl font-medium max-w-4xl mx-auto">
+          <p className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary text-lg md:text-xl font-medium max-w-4xl mx-auto">
             At HK Nexus, we don't just provide services — we build long-term
             partnerships. Businesses choose us because we combine people,
             process, and technology to deliver consistent, measurable results
             with a human touch.
           </p>
-          <p className="text-gray-500 text-base md:text-lg font-medium max-w-3xl mx-auto mt-3">
+          <p className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary text-base md:text-lg font-medium max-w-3xl mx-auto mt-3">
             Our clients value us for our responsiveness, transparency, and
             commitment to quality, making us a trusted extension of their own
             teams.

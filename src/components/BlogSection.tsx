@@ -129,13 +129,13 @@ const BlogSection = ({ title }: { title?: boolean }) => {
                     </p>
 
                     {/* Read More Link */}
-                    <Link
+                    {/* <Link
                       href={`/blog/${post.slug}`}
                       className="inline-flex items-center gap-2 text-primary font-semibold text-base group-hover:gap-4 transition-all w-fit"
                     >
                       Read More
                       <ArrowRight className="w-5 h-5" />
-                    </Link>
+                    </Link> */}
                   </div>
                 </div>
               </article>
