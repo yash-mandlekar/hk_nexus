@@ -29,7 +29,7 @@ export default function Navbar() {
     { name: "Services", href: "/services" },
     { name: "Careers", href: "/careers" },
     { name: "About", href: "/about" },
-    { name: "Contact", href: "/contact" },
+    // { name: "Contact", href: "/contact" },
     { name: "Blogs", href: "/blog" },
   ];
 
@@ -92,10 +92,10 @@ export default function Navbar() {
             {/* CTA Button (Desktop) */}
             <div className="hidden md:block">
               <Link
-                href="#"
+                href="/contact"
                 className="group relative inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold text-white transition-all duration-200 bg-primary rounded-full hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary shadow-lg shadow-primary/20"
               >
-                Get Started
+                Connect with Us
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>

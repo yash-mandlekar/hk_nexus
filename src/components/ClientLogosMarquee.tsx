@@ -40,7 +40,7 @@ export const clients = [
 
 const ClientLogosMarquee = () => {
   // Duplicate the array for seamless infinite scroll
-  const duplicatedClients = [...clients, ...clients];
+  const duplicatedClients = [...clients, ...clients, ...clients, ...clients, ...clients, ...clients, ...clients];
 
   return (
     <section className="w-full py-12 bg-gray-50 overflow-hidden">

@@ -122,21 +122,27 @@ export default function AboutPage() {
 
         {/* Our Story Section */}
         <section className="pb-14 xl:pb-16 px-6 xl:px-12">
-          <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="relative h-[400px] rounded-2xl overflow-hidden shadow-xl">
-              <Image
-                src="/images/about/about-1.png"
-                alt="HK Nexus Global Office"
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div>
-              <h2 className="text-3xl md:text-3xl xl:text-3xl font-bold text-gray-900 mb-6">
-                Our Story
-              </h2>
-              <div className="space-y-4 text-gray-600 text-lg leading-relaxed">
-                <p>
+          <div className="max-w-6xl mx-auto">
+            {/* Section Title */}
+            <h2 className="text-3xl md:text-3xl xl:text-3xl font-bold text-gray-900 mb-12 text-center">
+              Our Story
+            </h2>
+
+            {/* Row 1: Image Left, Text Right */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+              <div className="relative h-[350px] rounded-2xl overflow-hidden shadow-xl">
+                <Image
+                  src="/images/about/about-1.png"
+                  alt="HK Nexus Global Office"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary mb-4">
+                  The Beginning
+                </h3>
+                <p className="text-gray-600 text-lg leading-relaxed">
                   Founded in 2025, HK Nexus began with a simple belief — that
                   businesses grow faster when they have the right people
                   standing beside them. What started as a small, passionate team
@@ -145,7 +151,16 @@ export default function AboutPage() {
                   beyond growth, it has been a journey of resilience, hope, and
                   shared dreams.
                 </p>
-                <p>
+              </div>
+            </div>
+
+            {/* Row 2: Text Left, Image Right */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+              <div className="order-2 lg:order-1">
+                <h3 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary mb-4">
+                  Our Evolution
+                </h3>
+                <p className="text-gray-600 text-lg leading-relaxed">
                   As the world evolved, so did we. We expanded our capabilities,
                   strengthened our foundation, and embraced innovation —
                   including intelligent automation, call-center process
@@ -156,7 +171,32 @@ export default function AboutPage() {
                   interaction and defend client data with uncompromising
                   reliability.
                 </p>
-                <p>
+              </div>
+              <div className="relative h-[350px] rounded-2xl overflow-hidden shadow-xl order-1 lg:order-2">
+                <Image
+                  src="/images/about/about-2.png"
+                  alt="HK Nexus Global Team"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+
+            {/* Row 3: Image Left, Text Right */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div className="relative h-[350px] rounded-2xl overflow-hidden shadow-xl">
+                <Image
+                  src="/images/about/about-3.png"
+                  alt="HK Nexus Global Vision"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary mb-4">
+                  Today & Beyond
+                </h3>
+                <p className="text-gray-600 text-lg leading-relaxed">
                   Today, HK Nexus stands as a symbol of possibility. A place
                   where businesses find not just support, but strategy. Not just
                   execution, but growth. Not just a vendor, but a team they can
@@ -166,18 +206,6 @@ export default function AboutPage() {
                   inspire, and elevate every business we serve.
                 </p>
               </div>
-            </div>
-          </div>
-
-          {/* Second Image Section */}
-          <div className="max-w-3xl mx-auto mt-16">
-            <div className="relative h-[400px] lg:h-[500px] rounded-2xl overflow-hidden shadow-xl">
-              <Image
-                src="/images/about/about-2.png"
-                alt="HK Nexus Global Team"
-                fill
-                className="object-contain"
-              />
             </div>
           </div>
         </section>

@@ -136,9 +136,6 @@ const Footer = () => {
               <li className="text-gray-600 font-medium text-[15px] hover:text-gray-900 cursor-pointer transition-colors">
                 info@hknexusglobal.com
               </li>
-              <li className="text-gray-600 font-medium text-[15px]">
-                Mon–Fri, 9am–6pm
-              </li>
             </ul>
 
             {/* CTA Button with Hover Fill Effect */}
