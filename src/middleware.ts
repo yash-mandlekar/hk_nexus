@@ -1,29 +1,23 @@
-import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
-import { getToken } from "next-auth/jwt";
+import { withAuth } from "next-auth/middleware";
 
-export async function middleware(request: NextRequest) {
-    const path = request.nextUrl.pathname;
-
-    // Define paths that require authentication
-    const isProtectedPath = path.startsWith("/admin/");
-
-    if (isProtectedPath) {
-        const token = await getToken({
-            req: request,
-            secret: process.env.NEXTAUTH_SECRET || "your-secret-key",
-        });
-
-        if (!token) {
-            const url = new URL("/admin", request.url);
-            url.searchParams.set("callbackUrl", path);
-            return NextResponse.redirect(url);
-        }
-    }
-
-    return NextResponse.next();
-}
+export default withAuth({
+    callbacks: {
+        authorized: ({ req, token }) => {
+            const path = req.nextUrl.pathname;
+            // Protect all /admin/* routes except exact /admin
+            if (path.startsWith("/admin/")) {
+                return !!token;
+            }
+            return true;
+        },
+    },
+    pages: {
+        signIn: "/admin",
+    },
+    secret: process.env.NEXTAUTH_SECRET || "your-secret-key",
+});
 
 export const config = {
-    matcher: ["/admin/dashboard/:path*"],
+    // Apply middleware to all /admin sub-routes
+    matcher: ["/admin/:path*"],
 };
