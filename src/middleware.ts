@@ -1,21 +1,26 @@
-import { withAuth } from "next-auth/middleware";
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
 
-export default withAuth({
-    callbacks: {
-        authorized: ({ req, token }) => {
-            const path = req.nextUrl.pathname;
-            // Protect all /admin/* routes except exact /admin
-            if (path.startsWith("/admin/")) {
-                return !!token;
-            }
-            return true;
-        },
-    },
-    pages: {
-        signIn: "/admin",
-    },
-    secret: process.env.NEXTAUTH_SECRET || "your-secret-key",
-});
+export function middleware(request: NextRequest) {
+    const path = request.nextUrl.pathname;
+
+    // Define protected paths
+    const isProtectedPath = path.startsWith("/admin/") && path !== "/admin";
+
+    if (isProtectedPath) {
+        // Explicitly check for both standard and secure cookie names
+        const hasSessionToken = request.cookies.has("next-auth.session-token");
+        const hasSecureSessionToken = request.cookies.has("__Secure-next-auth.session-token");
+
+        if (!hasSessionToken && !hasSecureSessionToken) {
+            const url = new URL("/admin", request.url);
+            url.searchParams.set("callbackUrl", path);
+            return NextResponse.redirect(url);
+        }
+    }
+
+    return NextResponse.next();
+}
 
 export const config = {
     // Apply middleware to all /admin sub-routes
